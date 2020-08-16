@@ -11,7 +11,10 @@ const Login = ({authenticate}) => {
         onClick={() => authenticate("Github")}>
         Log In With Gitub
       </Button>
-      <Button variant="contained" color="secondary">
+      <Button
+        variant="contained"
+        color="secondary"
+        onClick={() => authenticate("Facebook")}>
         Log In With Facebook
       </Button>
     </div>

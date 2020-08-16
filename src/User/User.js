@@ -8,7 +8,7 @@ const User = () => {
     setUserInfo] = useState({email: null, displayName: ""});
 
   const authHandler = async(authData) => {
-    console.log(authData);
+    console.log("AuthData:" + JSON.stringify(authData));
     const user = authData.user;
     setUserInfo((prevValue) => ({
       ...prevValue,
@@ -18,7 +18,7 @@ const User = () => {
   };
 
   const authenticate = (provider) => {
-    console.log(provider);
+    console.log("Provider:" + JSON.stringify(provider));
     const authProvider = new firebase.auth[`${provider}AuthProvider`]();
     firebaseApp
       .auth()
@@ -44,7 +44,7 @@ const User = () => {
     firebase
       .auth()
       .onAuthStateChanged((user) => {
-        console.log(user);
+        console.log("user:" + user);
         if (user) {
           authHandler({user});
         }
@@ -56,10 +56,7 @@ const User = () => {
   }
   return (
     <div className="user-info">
-      <label>Email:</label>
-      <span type="text" id="email">
-        test@test.com
-      </span>
+      <label>Email: {userInfo.email}</label>
       {btnLogout}
     </div>
   );
